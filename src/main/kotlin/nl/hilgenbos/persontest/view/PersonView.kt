@@ -11,6 +11,7 @@ class PersonView : View("Person View") {
     private val model: PersonModel by inject()
     private val controller: PersonController by inject()
 
+
     override val root = borderpane {
         center = vbox {
             alignment = Pos.CENTER
@@ -57,7 +58,7 @@ class PersonView : View("Person View") {
                         enableWhen(model.valid)
                         action {
                             model.commit()
-                            controller.addPerson(model.item)
+                            controller.addPerson(model.firstName.value, model.lastName.value)
                             model.rollback() // reset form
                         }
                     }
